@@ -1,0 +1,4 @@
+Building posncoin
+See doc/readme-qt.rst for instructions on building posncoin QT.
+
+See doc/build-*.txt for instructions on building posncoind.
