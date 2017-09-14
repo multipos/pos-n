@@ -18,7 +18,7 @@ win32 {
 
 TEMPLATE = app
 TARGET = "PoSN-Qt"
-VERSION = 1.0.0.1
+VERSION = 1.0.0.2
 INCLUDEPATH += src src/json src/qt src/tor
 INCLUDEPATH += src/tor/adapter src/tor/common src/tor/ext
 INCLUDEPATH += src/tor/ext/curve25519_donna src/tor/ext/ed25519/donna

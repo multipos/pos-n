@@ -64,7 +64,7 @@ bool SelectRandomMintColor(const CBlockIndex *pindexPrev, int& nMintColor)
     while (nMintColor == PSN_COLOR_P00)
     {       
         // find a random coin that still has mint left
-        for (int i = 1; ++i < PSN_COLOR_END; ++i)
+        for (int i = 1; i < PSN_COLOR_END; ++i)
         {       
            std::set<int>::iterator it = setTried.find(i);
            if (it == setTried.end())
