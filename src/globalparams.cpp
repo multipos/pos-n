@@ -8,6 +8,9 @@
 ///
 //////////////////////////////////////////////////////////////////////
 
+// Monday, October 2, 2017 4:00:00 AM GMT
+static const int64_t POS_START_TIME = 1506916800;
+
 
 //////////////////////////////////////////////////////////////////////
 ///
@@ -60,8 +63,10 @@ static const int LAST_FAIR_LAUNCH_BLOCK_TESTNET = 30;     // 6 min
 #if PROOF_MODEL == PURE_POS
 // must have a last PoW block if it is to be pure PoS
 // optional overlap between PoW and PoS
-int LAST_POW_BLOCK = 101100;  // 300 + 14 * 5 * 24 * 60 = 14 day
-int FIRST_POS_BLOCK = 101101;  // LAST_POW_BLOCK + 1
+int LAST_POW_BLOCK_ORIG = 101100;  // 300 + 14 * 5 * 24 * 60 = 14 day
+int FIRST_POS_BLOCK_ORIG = 101101;  // LAST_POW_BLOCK_ORIG + 1
+int LAST_POW_BLOCK = 94478;  // ALL MINING DEPLETED
+int FIRST_POS_BLOCK = 94479;  // LAST_POW_BLOCK + 1
 static const int LAST_POW_BLOCK_TESTNET = 101100;
 static const int FIRST_POS_BLOCK_TESTNET = 81;
 #elif PROOF_MODEL == MIXED_POW_POS
@@ -696,13 +701,21 @@ int64_t GetMaxPoWSubsidy(int nColor, const int64_t nReward)
     return nReward;
 }
 
-int GetLastPoWBlock()
+int GetLastPoWBlock(int64_t nTime)
 {
+    if (nTime < POS_START_TIME)
+    {
+       return fTestNet ? LAST_POW_BLOCK_TESTNET : LAST_POW_BLOCK_ORIG;
+    }
     return fTestNet ? LAST_POW_BLOCK_TESTNET : LAST_POW_BLOCK;
 }
 
-int GetFirstPoSBlock()
+int GetFirstPoSBlock(int64_t nTime)
 {
+    if (nTime < POS_START_TIME)
+    {
+        return fTestNet ? FIRST_POS_BLOCK_TESTNET : FIRST_POS_BLOCK_ORIG;
+    }
     return fTestNet ? FIRST_POS_BLOCK_TESTNET : FIRST_POS_BLOCK;
 }
 

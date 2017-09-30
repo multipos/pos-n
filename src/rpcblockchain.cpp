@@ -47,7 +47,7 @@ double GetDifficulty(const CBlockIndex* blockindex)
 double GetPoWMHashPS()
 {
 #if PROOF_MODEL == PURE_POS
-    static const int nLastPoWBlock = GetLastPoWBlock();
+    int nLastPoWBlock = GetLastPoWBlock(GetAdjustedTime());
     if (pindexBest->nHeight >= nLastPoWBlock)
         return 0;
 #endif

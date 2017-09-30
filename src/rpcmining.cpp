@@ -62,7 +62,7 @@ Value getsubsidy(const Array& params, bool fHelp)
     int nSubsidyColor = PSN_COLOR_P02;
 
 #if PROOF_MODEL == PURE_POS
-    static const int nLastPoWBlock = GetLastPoWBlock();
+    int nLastPoWBlock = GetLastPoWBlock(GetAdjustedTime());
 #endif
 
     if (params.size() == 0) {
@@ -263,7 +263,7 @@ Value getworkex(const Array& params, bool fHelp)
         throw JSONRPCError(-10, "posncoin is downloading blocks...");
 
 #if PROOF_MODEL == PURE_POS
-    static const int nLastPoWBlock = GetLastPoWBlock();
+    int nLastPoWBlock = GetLastPoWBlock(GetAdjustedTime());
     if (pindexBest->nHeight >= nLastPoWBlock)
         throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
 #endif
@@ -400,7 +400,7 @@ Value getwork(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "posncoin is downloading blocks...");
 
 #if PROOF_MODEL == PURE_POS
-    static const int nLastPoWBlock = GetLastPoWBlock();
+    int nLastPoWBlock = GetLastPoWBlock(GetAdjustedTime());
     if (pindexBest->nHeight >= nLastPoWBlock)
         throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
 #endif
@@ -549,7 +549,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "posncoin is downloading blocks...");
 
 #if PROOF_MODEL == PURE_POS
-    static const int nLastPoWBlock = GetLastPoWBlock();
+    int nLastPoWBlock = GetLastPoWBlock(GetAdjustedTime());
     if (pindexBest->nHeight >= nLastPoWBlock)
         throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
 #endif

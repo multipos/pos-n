@@ -194,8 +194,8 @@ void FillNets(const std::map<int, int64_t> &mapDebit,
 int64_t GetTargetSpacing(int nHeight, bool fProofOfStake);
 int GetLastFairLaunchBlock();
 #if PROOF_MODEL == PURE_POS
-int GetLastPoWBlock();
-int GetFirstPoSBlock();
+int GetLastPoWBlock(int64_t nTime);
+int GetFirstPoSBlock(int64_t nTime);
 #endif
 
 int64_t GetMaxPoWMint(int nColor);

@@ -32,7 +32,8 @@ static const int DATABASE_VERSION = 70508;
 
 // 61017: original release version (v1.0.0.1)
 //        fix staking loop (v1.0.0.2)
-static const int PROTOCOL_VERSION = 61017;
+// 61018: fix pow-pos gap (v1.1.0.1)
+static const int PROTOCOL_VERSION = 61018;
 
 // earlier versions not supported as of Feb 2012, and are disconnected
 static const int MIN_PROTO_VERSION = 209;

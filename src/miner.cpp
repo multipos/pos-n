@@ -811,8 +811,7 @@ void StakeMiner(CWallet *pwallet)
     RenameThread("posncoin-miner");
 
 #if PROOF_MODEL == PURE_POS
-    //
-    static const int nFirstPoSBlock = GetFirstPoSBlock();
+    int nFirstPoSBlock = GetFirstPoSBlock(GetAdjustedTime());
     int nTargetSpacing = GetTargetSpacing(pindexBest->nHeight +1, true);
     unsigned int nMilliWaitForPoS = nTargetSpacing * 1000 / 2;
 #endif

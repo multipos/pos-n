@@ -393,7 +393,10 @@ bool AppInit2()
 #endif
 
     // ensure that there is not a gap where no blocks can be signed
-    assert ((GetFirstPoSBlock() - 1) <= GetLastPoWBlock());
+    int64_t inittime = GetAdjustedTime();
+    int nLastPoWBlock = GetLastPoWBlock(inittime);
+    int nFirstPoSBlock = GetFirstPoSBlock(inittime);
+    assert ((nFirstPoSBlock - 1) <= nLastPoWBlock);
 
     // basic multicurrency checks and setup
     {

@@ -1433,7 +1433,7 @@ struct AMOUNT GetPoWSubsidy(const CBlockIndex *pindexPrev, int nColor)
     static const int64_t STANDARD_REWARD = 9375 * BASE_COIN;  // 9375
 
     static const int nLastFairLaunchBlock = GetLastFairLaunchBlock();
-    static const int nLastPoWBlock = GetLastPoWBlock();
+    int nLastPoWBlock = GetLastPoWBlock(GetAdjustedTime());
 
     struct AMOUNT stSubsidy;
     stSubsidy.nValue = 0;
@@ -3335,8 +3335,9 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
 bool CBlock::AcceptBlock()
 {
-    static const int nLastPoWBlock = GetLastPoWBlock();
-    static const int nFirstPoSBlock = GetFirstPoSBlock();
+    int accepttime = GetAdjustedTime();
+    int nLastPoWBlock = GetLastPoWBlock(accepttime);
+    int nFirstPoSBlock = GetFirstPoSBlock(accepttime);
 
     AssertLockHeld(cs_main);
     // Check for duplicate

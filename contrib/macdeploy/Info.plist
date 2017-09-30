@@ -9,16 +9,16 @@
         <key>CFBundlePackageType</key>
         <string>APPL</string>
         <key>CFBundleGetInfoString</key>
-        <string>PoS-N 1.0.0.2</string>
+        <string>PoS-N 1.1.0.1</string>
         <key>CFBundleExecutable</key>
         <string>PoSN-Qt</string>
         <key>CFBundleIdentifier</key>
         <string>us.posncoin.posncoin-qt</string>
         <key>CFBundleShortVersionString</key>
-        <string>1.0.0.2</string>
+        <string>1.1.0.1</string>
         <key>CFBundleSignature</key>
         <string>P0SN</string>
         <key>CFBundleVersion</key>
-        <string>1.0.0.2</string>
+        <string>1.1.0.1</string>
 </dict>
 </plist>
